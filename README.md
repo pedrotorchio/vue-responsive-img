@@ -1,18 +1,8 @@
-# vue-responsive-img
+# VUE-RESPONSIVE-IMG
+# Generates img element with responsive attributes
 
-> A responsive img element vue component
-
-## Build Setup
-
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-```
-
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## Props
+1. sources: Array = [], list of source files and sizes, according to [srcset dependency](https://www.npmjs.com/package/srcset)
+2. baseUrl: String = '', common url to prefix every url in *sources*
+3. src: Number = 0, *sources* element index for fallback url
+4. sizes: String | Array = '100vw', list of mappings between screen size breakpoints and image sizes, as in [MDN](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images#Resolution_switching_Different_sizes)
