@@ -1,60 +1,56 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
+    <responsive-image 
+    title="Responsive Image"
+    alt="tag1, tag2, tag2, Responsive Image"
+    :src="src" 
+    :baseUrl="baseUrl" 
+    :sources="sources" 
+    :sizes="sizes" />
   </div>
 </template>
 
 <script>
+import ResponsiveImage from './Image';
+
 export default {
   name: 'app',
+  components: { ResponsiveImage },
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+        src: 0,
+        baseUrl: 'http://via.placeholder.com',
+        sources: [
+          {url: '350x350', width: 350},
+          {url: '460x460', width: 460},
+          {url: '900x900', width: 900},
+          {url: '1400x600', width: 1400},
+        ],
+        // sizes: [
+        //   '(max-width: 320px) 100vw',
+        //   '(max-width: 640px) 50vw',
+        //   '20vw',
+        // ],
+        sizes:
+          `100vw`,
     }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+img {
+  width: 100vw;
+  border: 2px solid black;
 }
-
-h1, h2 {
-  font-weight: normal;
+@media (min-width: 320px) {
+  img {
+    width: 50vw;
+  }
 }
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
+@media (min-width: 640px) {
+  img {
+    width: 20vw;
+  }
 }
 </style>
