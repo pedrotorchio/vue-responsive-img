@@ -27,13 +27,11 @@ export default {
           {url: '900x900', width: 900},
           {url: '1400x600', width: 1400},
         ],
-        // sizes: [
-        //   '(max-width: 320px) 100vw',
-        //   '(max-width: 640px) 50vw',
-        //   '20vw',
-        // ],
-        sizes:
-          `100vw`,
+        sizes: [
+          '(max-width: 320px) 100vw',
+          '(max-width: 640px) 50vw',
+          '20vw',
+        ],
     }
   }
 }
