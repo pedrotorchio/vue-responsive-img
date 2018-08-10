@@ -11,7 +11,8 @@
 </template>
 
 <script>
-const ResponsiveImage = import(/* webpackChunkName: "index" */'./Image');
+// const ResponsiveImage = import(/* webpackChunkName: "index" */'./Image');
+import ResponsiveImage from './Image';
 
 export default {
   name: 'app',
