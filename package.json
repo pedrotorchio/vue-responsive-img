@@ -3,7 +3,15 @@
   "description": "A responsive img element vue component",
   "version": "1.0.1",
   "main": "dist/responsiveImage.js",
-  "author": "pedrotorchio <pedrotorchio@gmail.com>",
+  "author": {
+    "name": "Pedro Torchio",
+    "email": "pedro@torchiodev.com",
+    "url": "http://www.torchiodev.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pedrotorchio/vue-responsive-img.git"
+  },
   "license": "MIT",
   "keywords": [
     "vue",
