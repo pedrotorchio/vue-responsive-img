@@ -21,7 +21,7 @@ export default {
     },
     sources: {
       type: Array,
-      default: []
+      default: () => []
     },
     sizes: {
       type: [String, Array],
