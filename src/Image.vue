@@ -9,7 +9,7 @@
 import srcset from 'srcset';
 import joiner from 'url-join';
 export default {
-  name: "Image",
+  name: "ResponsiveImage",
   props: {
     src: {
       type: Number,
