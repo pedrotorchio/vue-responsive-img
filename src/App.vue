@@ -12,7 +12,7 @@
 
 <script>
 // const ResponsiveImage = import(/* webpackChunkName: "index" */'./Image');
-import ResponsiveImage from './Image';
+import ResponsiveImage from './ResponsiveImage';
 
 export default {
   name: 'app',

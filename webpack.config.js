@@ -4,7 +4,7 @@ var webpack = require('webpack')
 module.exports = {
   entry: {
     app: './src/main.js',
-    responsiveImage: './src/Image.vue'
+    responsiveImage: './src/ResponsiveImage.vue'
   },
   output: {
     path: path.resolve(__dirname, './dist'),
