@@ -1,5 +1,6 @@
 var path = require('path')
 var webpack = require('webpack')
+var merge = require('webpack-merge')
 
 module.exports = {
   entry: {
@@ -55,6 +56,11 @@ module.exports = {
   },
   performance: {
     hints: false
+  },
+  externals: {
+    srcset: "srcset",
+    joiner: "url-join",
+    vue: "vue"
   },
   devtool: '#eval-source-map'
 }
