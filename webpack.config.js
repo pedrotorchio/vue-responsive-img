@@ -2,52 +2,54 @@ var path = require('path')
 var webpack = require('webpack')
 var merge = require('webpack-merge')
 
-module.exports = {
+var common = {
   entry: {
-    app: './src/main.js',
-    responsiveImage: './src/ResponsiveImage.vue'
+    app: "./src/main.js",
+    responsiveImage: "./src/ResponsiveImage.vue"
   },
   output: {
-    path: path.resolve(__dirname, './dist'),
-    publicPath: '/dist/',
-    filename: '[name].js'
+    path: path.resolve(__dirname, "./dist"),
+    publicPath: "/dist/",
+    filename: "[name].js"
   },
   module: {
     rules: [
       {
         test: /\.css$/,
-        use: [
-          'vue-style-loader',
-          'css-loader'
-        ],
-      },      {
+        use: ["vue-style-loader", "css-loader"]
+      },
+      {
         test: /\.vue$/,
-        loader: 'vue-loader',
+        loader: "vue-loader",
         options: {
-          loaders: {
-          }
+          loaders: {}
           // other vue-loader options go here
         }
       },
       {
         test: /\.js$/,
-        loader: 'babel-loader',
+        loader: "babel-loader",
         exclude: /node_modules/
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
-        loader: 'file-loader',
+        loader: "file-loader",
         options: {
-          name: '[name].[ext]?[hash]'
+          name: "[name].[ext]?[hash]"
         }
       }
     ]
   },
+  // externals: {
+  //   srcset: "srcset",
+  //   joiner: "url-join",
+  //   vue: "vue"
+  // },
   resolve: {
     alias: {
-      'vue$': 'vue/dist/vue.esm.js'
+      vue$: "vue/dist/vue.esm.js"
     },
-    extensions: ['*', '.js', '.vue', '.json']
+    extensions: ["*", ".js", ".vue", ".json"]
   },
   devServer: {
     historyApiFallback: true,
@@ -57,13 +59,8 @@ module.exports = {
   performance: {
     hints: false
   },
-  externals: {
-    srcset: "srcset",
-    joiner: "url-join",
-    vue: "vue"
-  },
-  devtool: '#eval-source-map'
-}
+  devtool: "#eval-source-map"
+};
 
 if (process.env.NODE_ENV === 'production') {
   module.exports.devtool = '#source-map'
@@ -85,3 +82,23 @@ if (process.env.NODE_ENV === 'production') {
     })
   ])
 }
+
+module.exports = [
+  merge(common, {
+    entry: path.resolve(__dirname + "/src/plugin.js"),
+    output: {
+      filename: "vue-responsive-img.min.js",
+      libraryTarget: "window",
+      library: "VueResponsiveImg"
+    }
+  }),
+  merge(common, {
+    entry: path.resolve(__dirname + "/src/ResponsiveImage.vue"),
+    output: {
+      filename: "vue-responsive-img.js",
+      libraryTarget: "umd",
+      library: "vueResponsiveImg",
+      umdNamedDefine: true
+    }
+  })
+];
