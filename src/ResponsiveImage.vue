@@ -34,6 +34,9 @@ export default {
         return [];
       
       let srcs = this.sources.map( src => {
+        if (!src)
+          return src;
+
         if( !src.url )
           throw 'SOURCES prop object array must have an url property';
         
@@ -46,18 +49,28 @@ export default {
       return srcs;
     },
     _srcset() {
+      if (!_sources) 
+        return '';
+
       return srcset.stringify(this._sources);
     },
     _sizes() { //array
-      let sizes = this.sizes;
+      let sizes;
+      if (!this.sizes)
+        sizes = '100vw';
+      else
+        sizes = this.sizes;
+
       if (typeof sizes === 'string')
         sizes = sizes.split(',');
 
-      
       return sizes;
     },
     _src() { // fallback url
-      if (this._sources)
+      if (!this._sources)
+        return '';
+      if (!this.src)
+        this.src = 0;
       return this._sources[this.src].url;
     }
   },
