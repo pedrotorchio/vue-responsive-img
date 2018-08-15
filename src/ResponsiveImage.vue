@@ -84,7 +84,7 @@ export default {
     <p>{{ _sources }}</p>
     <p>{{ _sizes }}</p>
   </div> -->
-  <img 
+  <img @load="$emit('load')"
       :src="_src"
       :srcset="_srcset"
       :sizes="_sizes" />
