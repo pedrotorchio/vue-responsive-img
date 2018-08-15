@@ -30,6 +30,9 @@ export default {
   },
   computed: {
     _sources() { // full url srcs
+      if (!this.sources)
+        return [];
+      
       let srcs = this.sources.map( src => {
         if( !src.url )
           throw 'SOURCES prop object array must have an url property';
@@ -39,6 +42,7 @@ export default {
         }
         return src;
       });
+
       return srcs;
     },
     _srcset() {
@@ -53,6 +57,7 @@ export default {
       return sizes;
     },
     _src() { // fallback url
+      if (this._sources)
       return this._sources[this.src].url;
     }
   },
