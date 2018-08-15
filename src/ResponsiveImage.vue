@@ -49,7 +49,7 @@ export default {
       return srcs;
     },
     _srcset() {
-      if (!_sources) 
+      if (!this._sources) 
         return '';
 
       return srcset.stringify(this._sources);
