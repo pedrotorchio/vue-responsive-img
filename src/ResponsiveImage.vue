@@ -36,13 +36,14 @@ export default {
       let srcs = this.sources.map( src => {
         if (!src)
           return src;
-
+        console.log('39', src);
         if( !src.url )
           throw 'SOURCES prop object array must have an url property';
         
         if (this.baseUrl) {
           src.url = joiner(this.baseUrl, src.url);
         }
+        console.log('46', src);
         return src;
       });
 
@@ -67,10 +68,11 @@ export default {
       return sizes;
     },
     _src() { // fallback url
-      if (!this._sources)
+      if (!this._sources || !this._sources.length)
         return '';
       if (!this.src)
         this.src = 0;
+      
       return this._sources[this.src].url;
     }
   },
