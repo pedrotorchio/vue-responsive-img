@@ -1,6 +1,7 @@
-var path = require('path')
-var webpack = require('webpack')
-var merge = require('webpack-merge')
+var path = require('path');
+var webpack = require('webpack');
+var merge = require('webpack-merge');
+var ccase = require('change-case');
 
 var common = {
   entry: {
@@ -83,7 +84,7 @@ if (process.env.NODE_ENV === 'production') {
   ])
 }
 
-module.exports = [
+let builds = [
   merge(common, {
     entry: path.resolve(__dirname + "/src/plugin.js"),
     output: {
@@ -91,14 +92,27 @@ module.exports = [
       libraryTarget: "window",
       library: "VueResponsiveImg"
     }
-  }),
-  merge(common, {
-    entry: path.resolve(__dirname + "/src/ResponsiveImage.vue"),
-    output: {
-      filename: "vue-responsive-img.js",
-      libraryTarget: "umd",
-      library: "vueResponsiveImg",
-      umdNamedDefine: true
-    }
   })
 ];
+
+[
+  '/src/ResponsiveImage.vue',
+  '/src/ResponsiveImageWrapper.vue'
+
+].forEach ( function (file) {
+  
+  let ext  = path.extname(file);
+  let name = path.basename(file, ext);
+
+  builds.push(merge(common, {
+    entry: path.resolve(__dirname + file),
+    output: {
+      filename: ccase.paramCase(name) + '.js',
+      libraryTarget: 'umd',
+      library: ccase.camelCase(name),
+      umdNamedDefine: true
+    }
+  }));
+
+});
+module.exports = builds;
