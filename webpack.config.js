@@ -88,6 +88,7 @@ let builds = [
   merge(common, {
     entry: path.resolve(__dirname + "/src/plugin.js"),
     output: {
+      path: path.resolve(__dirname, "./dist"),
       filename: "vue-responsive-img.min.js",
       libraryTarget: "window",
       library: "VueResponsiveImg"
@@ -107,12 +108,12 @@ let builds = [
   builds.push(merge(common, {
     entry: path.resolve(__dirname + file),
     output: {
+      path: path.resolve(__dirname, "./dist"),
       filename: ccase.paramCase(name) + '.js',
       libraryTarget: 'umd',
       library: ccase.camelCase(name),
       umdNamedDefine: true
     }
   }));
-
 });
 module.exports = builds;
