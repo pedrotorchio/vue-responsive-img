@@ -4,15 +4,6 @@ var merge = require('webpack-merge');
 var ccase = require('change-case');
 
 var common = {
-  entry: {
-    app: "./src/main.js",
-    responsiveImage: "./src/ResponsiveImage.vue"
-  },
-  output: {
-    path: path.resolve(__dirname, "./dist"),
-    publicPath: "/dist/",
-    filename: "[name].js"
-  },
   module: {
     rules: [
       {
@@ -41,11 +32,11 @@ var common = {
       }
     ]
   },
-  // externals: {
-  //   srcset: "srcset",
-  //   joiner: "url-join",
-  //   vue: "vue"
-  // },
+  externals: {
+    srcset: "srcset",
+    joiner: "url-join",
+    vue: "vue"
+  },
   resolve: {
     alias: {
       vue$: "vue/dist/vue.esm.js"
@@ -92,13 +83,6 @@ let builds = [
       filename: "vue-responsive-img.min.js",
       libraryTarget: "window",
       library: "VueResponsiveImg"
-    }
-  }),
-  merge(common, {
-    entry: path.resolve(__dirname + "/src/index.js"),
-    output: {
-      path: path.resolve(__dirname, "./dist"),
-      filename: "index.js"
     }
   })
 ];
