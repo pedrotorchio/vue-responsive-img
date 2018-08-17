@@ -2,7 +2,7 @@
   "name": "vue-responsive-img",
   "description": "A responsive img element vue component",
   "version": "4.0.0",
-  "main": "dist/vue-responsive-img.js",
+  "main": "dist/index.js",
   "author": {
     "name": "Pedro Torchio",
     "email": "pedro@torchiodev.com",
