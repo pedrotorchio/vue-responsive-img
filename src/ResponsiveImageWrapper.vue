@@ -1,7 +1,7 @@
 <script>
 import ResponsiveImage from './ResponsiveImage';
 
-// image wrapper for Image type in jsapi-torchiodev.com/Image
+// image wrapper for { Image } from js-models-helper
 export default {
   name: 'ImageElement',
   components: {
